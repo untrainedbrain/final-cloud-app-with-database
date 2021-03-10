@@ -1,11 +1,16 @@
 from django.contrib import admin
 # <HINT> Import any new Models here
-from .models import Course, Lesson, Instructor, Learner, Question
+from .models import Course, Lesson, Instructor, Learner, Question, Choice
 
 # <HINT> Register QuestionInline and ChoiceInline classes here
 
 class QuestionInline(admin.StackedInline):
+    model = Question
     list_display = ('question', 'grade')
+
+class ChoiceInline(admin.StackedInline):
+    model = Choice
+    list_display = ("question", "correct")
 
 class LessonInline(admin.StackedInline):
     model = Lesson
